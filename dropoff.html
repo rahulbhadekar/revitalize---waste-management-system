@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drop-off Service</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  color:#333;
+}
+
+.container{
+  background:white;
+  padding:40px;
+  border-radius:15px;
+  width:420px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+h2{
+  text-align:center;
+  margin-bottom:25px;
+  color:#013F59;
+}
+
+label{
+  font-weight:600;
+  font-size:14px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin:8px 0 18px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:14px;
+  transition:0.3s;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:#013F59;
+  outline:none;
+  box-shadow:0 0 5px rgba(1,63,89,0.3);
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:8px;
+  background:#013F59;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#022f42;
+}
+
+.back{
+  background:#ccc;
+  margin-top:10px;
+}
+
+.back:hover{
+  background:#999;
+}
+
+.success{
+  display:none;
+  margin-top:15px;
+  text-align:center;
+  color:green;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📍 Schedule Drop-off</h2>
+
+<form id="dropForm">
+
+<label>Name</label>
+<input type="text" id="name" required>
+
+<label>Email</label>
+<input type="email" id="email" required>
+
+<label>Drop Location</label>
+<input type="text" id="location" placeholder="Enter drop location" required>
+
+<label>Date</label>
+<input type="date" id="date" required>
+
+<label>Type of Waste</label>
+<select id="waste">
+  <option>Plastic</option>
+  <option>Metal</option>
+  <option>Paper</option>
+  <option>E-waste</option>
+</select>
+
+<label>Additional Details</label>
+<textarea id="details" rows="3"></textarea>
+
+<button type="submit">Submit Request</button>
+
+<button type="button" class="back" onclick="goHome()">⬅ Back to Home</button>
+
+<div class="success" id="msg">✅ Request submitted successfully</div>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("dropForm").addEventListener("submit", async function(e){
+  e.preventDefault()
+
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    location: document.getElementById("location").value,
+    date: document.getElementById("date").value,
+    waste: document.getElementById("waste").value,
+    details: document.getElementById("details").value
+  }
+
+  try{
+    const res = await fetch("http://localhost:5000/api/dropoff",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data)
+    })
+
+    if(res.ok){
+      document.getElementById("msg").style.display="block"
+      document.getElementById("dropForm").reset()
+    }
+
+  }catch(err){
+    alert("Server error")
+  }
+
+})
+
+function goHome(){
+  window.location.href="index.html"
+}
+
+</script>
+
+</body>
+</html>
