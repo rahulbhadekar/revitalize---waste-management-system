@@ -21,7 +21,7 @@ This project aims to promote cleaner surroundings through a simple and user-frie
 
 Frontend: HTML, CSS, JavaScript  
 Backend: Node.js, Express.js  
-Database: (Add if using MongoDB/MySQL)  
+Database: MongoDB  
 Version Control: Git & GitHub  
 
 ---
@@ -63,6 +63,9 @@ node server.js
 ## 📸 Screenshots  
 
 <img width="1920" height="1080" alt="Screenshot 2026-02-21 151919" src="https://github.com/user-attachments/assets/eb0a2e37-db92-46fb-9b19-77a5a552ffbf" />
+<img width="1920" height="1080" alt="Screenshot 2026-02-21 151919" src="https://github.com/user-attachments/assets/79ebe2d1-6236-44bd-b936-479982ad4da8" />
+<img width="1920" height="1080" alt="Screenshot 2026-02-21 151919" src="https://github.com/user-attachments/assets/8f92f6b4-b068-4f38-94df-eec80a15ffda" />
+
   
 
 ---
@@ -76,7 +79,8 @@ The main goal of this project is to provide an efficient waste management soluti
 ## 👨‍💻 Author  
 
 Rahul Bhadekar  
-Computer Science Engineering Student  
+Computer Science Engineering Student 
+LNCTS BHOPAL (MP)
 
 ---
 
